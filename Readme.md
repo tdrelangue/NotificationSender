@@ -25,6 +25,7 @@
 - [Example Usage](#example-usage)
 - [Environment Setup](#environment-setup)
 - [Features](#features)
+- [Using the Decorator](#using-the-decorator)
 
 ---
 
