@@ -84,6 +84,38 @@ SendNotif(
 
 ---
 
+## **Using the Decorator**
+The module also provides a `notify_on_completion` decorator, which automatically sends a notification when a function finishes execution—whether it succeeds or fails.
+
+### **Decorator Usage**
+You can use `notify_on_completion` to wrap any function:
+
+```python
+import time
+import sys
+sys.path.append(r"c:\Users\tdrelangue\OneDrive\programmes\useful")
+from NotificationSender import SendNotif, notify_on_completion
+
+@notify_on_completion
+def example_function(success=True):
+    """A test function to demonstrate the decorator."""
+    if not success:
+        raise ValueError("This is a test error!")
+    time.sleep(2)
+    return "Done!"
+
+# Run the function
+example_function(True)  # Sends a success notification
+# example_function(False)  # Sends a failure notification
+```
+
+### **How It Works**
+- ✅ If the function **completes successfully**, a notification is sent with the runtime.
+- ❌ If the function **fails**, a notification is sent with the error message.
+- ⚠️ The error **is still raised** so that it appears on-screen.
+
+---
+
 ## **Environment Setup**
 The API key for Pushbullet is stored securely in a `.env` file. Ensure your `.env` file contains the following:
 
@@ -98,7 +130,3 @@ API_KEY=your_pushbullet_api_key
 - Supports custom titles and messages.
 - Feedback to check notification status.
 - Secure API key management using `.env`.
-
----
-
-This structure aligns with your typical presentation style while maintaining a detailed and professional approach. Let me know if you need further adjustments!
