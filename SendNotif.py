@@ -1,10 +1,17 @@
 from pushbullet import Pushbullet
 import time
 import traceback
+import sys
+import argparse
+
 
 def CollectAPIKey():
-    import sys
-    if len(sys.argv) >= 2:
+    parser = argparse.ArgumentParser(description='combines files into a pickle object, processes the data, and divides into training sets')
+    parser.add_argument('-apikey', dest='apikey', default=None, type=str,
+                    help='Api key for push bullet')
+    args,_ = parser.parse_known_args()
+    
+    if args.apikey:
         # If the user provided a key in the cammand we use it
         # Usage: python Geo_Extraction.py <api_key>
         api_key = sys.argv[1]
@@ -23,6 +30,7 @@ def CollectAPIKey():
             print("Next time you want to use this software, know that you can provide your API key by:")
             print("1. Creating a .env file in the same directory as this script with the variable API_KEY")
             print("2. Launching the script with this command: python Geo_Extraction.py <your_api_key>")
+    
     return api_key
 
 
