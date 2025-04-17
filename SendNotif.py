@@ -91,3 +91,13 @@ def notify_on_completion(func):
 
 if __name__ == "__main__":
     SendNotif()
+    import requests
+
+    data = {
+        "title": "🔥 Local Update",
+        "message": "Your model finished training!",
+        # Optional: include your device token
+        "expo_push_token": "ExponentPushToken[xxxxxxxxxxxxxxxxxxxxxx]"
+    }
+
+    requests.post("http://192.168.137.1:5000/send", json=data)
